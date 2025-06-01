@@ -57,6 +57,15 @@
                     </option>
                 {% endfor %}
             </select>
+            <label for="weapon_select5">武器5:</label>
+            <select name="weapon_select5" id="weapon_select5">
+                <option value="">-- 選択してください --</option>
+                {% for weapon_name in weapon_list %}
+                    <option value="{{ weapon_name }}_5" {% if weapon_name == selected_weapon[4] %}selected{% endif %}>
+                        {{ weapon_name }}
+                    </option>
+                {% endfor %}
+            </select>
             <div style="display: flex; gap: 1em;">
             <label><input type="checkbox" name="attr_checked" value="溶解">溶解</label>
             <label><input type="checkbox" name="attr_checked" value="硬化">硬化</label>
