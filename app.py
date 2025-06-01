@@ -34,7 +34,7 @@ def load_data_from_json(data_file):
 def build_selected_weapons_dict(selected_w, weapons_dict):
     counter = defaultdict(int)
     result = {}
-    print(f"test(sel_w) - {selected_w}")
+    # print(f"test(sel_w) - {selected_w}")
 
     for key in selected_w:
         # 武器名は _? がついてるのでキーとして使うために削除
@@ -176,7 +176,7 @@ def index():
         # 属性を指定された場合、その結果だけにフィルタ
         if selected_attr:
             renkei_result = [rr for rr in renkei_result if any(k in rr[-1] for k in selected_attr)]
-        print(f"test(filterd) - {renkei_result}")
+        # print(f"test(filterd) - {renkei_result}")
 
         # 文字列が空でない場合のみ後半2文字(例：格闘_x の _x 部分)を削り、選ばれた武器名だけのリストを作る
         selected_weapons = [text[:-2] if text else text for text in selected_weapons]
