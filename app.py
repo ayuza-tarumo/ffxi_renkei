@@ -167,6 +167,7 @@ def index():
         selected_weapons.append(request.form.get('weapon_select2'))
         selected_weapons.append(request.form.get('weapon_select3'))
         selected_weapons.append(request.form.get('weapon_select4'))
+        selected_weapons.append(request.form.get('weapon_select5'))
         selected_attr = request.form.getlist('attr_checked')
         weapon_num = len(selected_weapons)
         # 選択された武器だけを含む辞書化
