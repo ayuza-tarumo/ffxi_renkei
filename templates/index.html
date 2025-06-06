@@ -1,118 +1,48 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ff11 連携検索</title>
-    <style>
-        body { font-family: sans-serif; margin: 20px; background-color: #f0f0f0; }
-        .container { max-width: 600px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        form { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: bold; }
-        select { width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; }
-        button { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
-        button:hover { background-color: #0056b3; }
-        .result { background-color: #e6f7ff; border: 1px solid #99e0ff; padding: 15px; border-radius: 5px; }
-        .result p { margin: 0 0 5px 0; }
-        .result ul { list-style-type: disc; margin-left: 20px; padding-left: 0; }
-    </style>
-</head>
-<body>
-    <div class="container">
-    sorry, this is a test site.
-        <form method="POST" action="/">
-            <label for="weapon_select1">武器1:</label>
-            <select name="weapon_select1" id="weapon_select1">
-                <option value="">-- 選択してください --</option>
-                {% for weapon_name in weapon_list %}
-                    <option value="{{ weapon_name }}_1" {% if weapon_name == selected_weapon[0] %}selected{% endif %}>
-                        {{ weapon_name }}
-                    </option>
-                {% endfor %}
-            </select>
-            <label for="weapon_select2">武器2:</label>
-            <select name="weapon_select2" id="weapon_select2">
-                <option value="">-- 選択してください --</option>
-                {% for weapon_name in weapon_list %}
-                    <option value="{{ weapon_name }}_2" {% if weapon_name == selected_weapon[1] %}selected{% endif %}>
-                        {{ weapon_name }}
-                    </option>
-                {% endfor %}
-            </select>
-            <label for="weapon_select3">武器3:</label>
-            <select name="weapon_select3" id="weapon_select3">
-                <option value="">-- 選択してください --</option>
-                {% for weapon_name in weapon_list %}
-                    <option value="{{ weapon_name }}_3" {% if weapon_name == selected_weapon[2] %}selected{% endif %}>
-                        {{ weapon_name }}
-                    </option>
-                {% endfor %}
-            </select>
-            <label for="weapon_select4">武器4:</label>
-            <select name="weapon_select4" id="weapon_select4">
-                <option value="">-- 選択してください --</option>
-                {% for weapon_name in weapon_list %}
-                    <option value="{{ weapon_name }}_4" {% if weapon_name == selected_weapon[3] %}selected{% endif %}>
-                        {{ weapon_name }}
-                    </option>
-                {% endfor %}
-            </select>
-            <label for="weapon_select5">武器5:</label>
-            <select name="weapon_select5" id="weapon_select5">
-                <option value="">-- 選択してください --</option>
-                {% for weapon_name in weapon_list %}
-                    <option value="{{ weapon_name }}_5" {% if weapon_name == selected_weapon[4] %}selected{% endif %}>
-                        {{ weapon_name }}
-                    </option>
-                {% endfor %}
-            </select>
-            <div style="display: flex; gap: 1em;">
-            <label><input type="checkbox" name="attr_checked" value="溶解">溶解</label>
-            <label><input type="checkbox" name="attr_checked" value="硬化">硬化</label>
-            <label><input type="checkbox" name="attr_checked" value="炸裂">炸裂</label>
-            <label><input type="checkbox" name="attr_checked" value="切断">切断</label>
-            </div>
-            <div style="display: flex; gap: 1em;">
-            <label><input type="checkbox" name="attr_checked" value="衝撃">衝撃</label>
-            <label><input type="checkbox" name="attr_checked" value="振動">振動</label>
-            <label><input type="checkbox" name="attr_checked" value="貫通">貫通</label>
-            <label><input type="checkbox" name="attr_checked" value="収縮">収縮</label>
-            </div>
-            <div style="display: flex; gap: 1em;">
-            <label><input type="checkbox" name="attr_checked" value="核熱">核熱</label>
-            <label><input type="checkbox" name="attr_checked" value="分解">分解</label>
-            <label><input type="checkbox" name="attr_checked" value="湾曲">湾曲</label>
-            <label><input type="checkbox" name="attr_checked" value="重力">重力</label>
-            </div>
-            <div style="display: flex; gap: 1em;">
-            <label><input type="checkbox" name="attr_checked" value="光">光</label>
-            <label><input type="checkbox" name="attr_checked" value="闇">闇</label>
-            </div>
-            <button type="submit">検索</button>
-        </form>
+<html>
+	<head>
+<title>Light Javascript Table Filter</title>
+<link href="./bootstrap.no-icons.min.css" rel="stylesheet">
+	</head>
+	<body>
+<section class="container">
 
-        <div class="result">
-        {% if weapon_num < 2 %}
-            武器を2つ以上選択して下さい。
-        {% elif selected_weapon %}
-                <h4>
-                    {% for sw in selected_weapon %}
-                        {{ sw }} →
-                    {% endfor %}
-                </h4>
-                <ol>
-                    {% if renkei_result %}
-                        {% for rr in renkei_result %}
-                            <li>{{ rr }}</li>
-                        {% endfor %}
-                    {% else %}
-                        <li>連携結果が見つかりません。</li>
-                    {% endif %}
-                </ol>
-            </div>
-        {% else %}
-            <p>使用武器を選択し検索ボタンを押下ください</p>
-    </div>
-        {% endif %}
-</body>
+	<h2>Light Javascript Table Filter</h2>
+
+	<input type="search" class="light-table-filter" data-table="order-table" placeholder="Filtrer" />
+
+	<table class="order-table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>E-Mail</th>
+				<th>Telefon</th>
+				<th>Preis</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Anna あいうえお</td>
+				<td>anna.mueller@gmail.com</td>
+				<td>0123456789</td>
+				<td>99 Eur</td>
+			</tr>
+			<tr>
+				<td>かきくけこ Vanda</td>
+				<td>jane@vanda.org</td>
+				<td>9876543210</td>
+				<td>349</td>
+			</tr>
+			<tr>
+				<td>Alferd Penyworth</td>
+				<td>alfred@batman.com</td>
+				<td>6754328901さしすせそ</td>
+				<td>199</td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>
+
+	</body>
 </html>
